@@ -1,0 +1,25 @@
+{
+  "name": "node-work-flow",
+  "version": "0.0.1",
+  "description": "A command-line tool for developer work flow with node.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arcia125/node-work-flow.git"
+  },
+  "keywords": [
+    "commandline",
+    "tool",
+    "node",
+    "cli"
+  ],
+  "author": "Kevin Hallett",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Arcia125/node-work-flow/issues"
+  },
+  "homepage": "https://github.com/Arcia125/node-work-flow#readme"
+}
