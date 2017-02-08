@@ -18,8 +18,16 @@
   ],
   "author": "Kevin Hallett",
   "license": "MIT",
+  "bin": {
+    "nwf": "./index.js"
+  },
   "bugs": {
     "url": "https://github.com/Arcia125/node-work-flow/issues"
   },
-  "homepage": "https://github.com/Arcia125/node-work-flow#readme"
+  "homepage": "https://github.com/Arcia125/node-work-flow#readme",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "commander": "^2.9.0",
+    "progress": "^1.1.8"
+  }
 }
