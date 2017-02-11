@@ -2,9 +2,6 @@ const baseChalk = require(`chalk`);
 const ProgessBar = require(`progress`);
 const fs = require(`fs`);
 
-// const getFileText = require(`../utils/getFileText`);
-// const getLines = require(`../utils/getLines`);
-// const findText = require(`../utils/findText`);
 const { getFileText, getLines, findText } = require(`../utils/fileText`);
 
 const log = console.log;
@@ -15,9 +12,9 @@ module.exports = (program) => {
         .command(`find <text> [file]`)
         .alias(`f`)
         .description(`find <text> in [file]`)
+        .option(`-L, --lines`, `prints line of each line containing <text> (default output)`)
         .option(`-I, --if`, `prints whether <text> was found in [file]`)
-        .option(`-N, --numbers`, `prints line number of each line containing <text>`)
-        .option(`-L, --lines`, `prints line of each line containing <text>`)
+        .option(`-N, --numbers`, `prints line number of each line containing <text> (default output)`)
         .option(`-n, --number-array`, `prints the line numbers as an array`)
         .option(`-f, --file-name`, `prints the name of [file]`)
         .option(`-v, --invert-match`, `inverts search selection`)
@@ -49,15 +46,15 @@ module.exports = (program) => {
                     const foundTextResult = lines.reduce((a, b) => a.concat(findText(b, text, { invert: options.invertMatch, onlyMatching: options.onlyMatching })), []);
                     const numberedLines = foundTextResult.map((line, lineNumber) => ({ lineNumber, line }));
                     const foundText = numberedLines.filter(lineObj => lineObj.line !== null);
+                    const noOutputOpts = !(options.if || options.numberArray || options.numbers || options.lines);
 
-                    // log lines if their option is passed
                     options.fileName && log(chalk.black.bgWhite(file));
                     options.if && log(foundText.length > 0 ? chalk.bold.green(true) : chalk.bold.red(false));
                     options.numberArray && log(foundText.map(line => line.lineNumber));
-                    (options.numbers || options.lines) && foundText.forEach((line) => {
+                    ((options.numbers || options.lines) || noOutputOpts) && foundText.forEach((line) => {
                         const spaceCount = 5 - line.lineNumber.toString().length;
-                        const lineNumberText = options.numbers ? `${line.lineNumber}${' '.repeat(spaceCount > 0 ? spaceCount : 1)}` : ``;
-                        const lineText = options.lines ? `${line.line}` : ``;
+                        const lineNumberText = options.numbers || noOutputOpts ? `${line.lineNumber}${' '.repeat(spaceCount > 0 ? spaceCount : 1)}` : ``;
+                        const lineText = options.lines || noOutputOpts ? `${line.line}` : ``;
                         log(`${lineNumberText}${lineText}`);
                     });
                 })
