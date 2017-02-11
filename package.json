@@ -1,6 +1,6 @@
 {
   "name": "node-work-flow",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A command-line tool for developer work flow with node.",
   "main": "index.js",
   "scripts": {
