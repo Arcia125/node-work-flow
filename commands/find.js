@@ -1,29 +1,29 @@
-const baseChalk = require(`chalk`);
-const ProgessBar = require(`progress`);
-const fs = require(`fs`);
-const glob = require(`glob`);
-const async = require(`async`);
+const baseChalk = require("chalk");
+const ProgessBar = require("progress");
+const fs = require("fs");
+const glob = require("glob");
+const async = require("async");
 
-const { getFileText, getLines, findText } = require(`../utils/fileText`);
+const { getFileText, getLines, findText } = require("../utils/fileText");
 
 const log = console.log;
 
 
 module.exports = (program) => {
     program
-        .command(`find <text> [file]`)
-        .alias(`f`)
-        .description(`find <text> in [file]`)
-        .option(`-L, --lines`, `prints line of each line containing <text> (default output)`)
-        .option(`-I, --if`, `prints whether <text> was found in [file]`)
-        .option(`-N, --numbers`, `prints line number of each line containing <text> (default output)`)
-        .option(`-n, --number-array`, `prints the line numbers as an array`)
-        .option(`-F, --file-name`, `prints the name of [file]`)
-        .option(`-f, --no-filename`, `removes file names from output`)
-        .option(`-v, --invert-match`, `inverts search selection`)
-        .option(`-c, --no-colors`, `removes colors from output`)
-        .option(`-o, --only-matching`, `returns only the part of each line matching <text>`)
-        .action((text, fileName = `index.js`, options) => {
+        .command("find <text> [file]")
+        .alias("f")
+        .description("find <text> in [file]")
+        .option("-L, --lines", "prints line of each line containing <text> (default output)")
+        .option("-I, --if", "prints whether <text> was found in [file]")
+        .option("-N, --numbers", "prints line number of each line containing <text> (default output)")
+        .option("-n, --number-array", "prints the line numbers as an array")
+        .option("-F, --file-name", "prints the name of [file]")
+        .option("-f, --no-filename", "removes file names from output")
+        .option("-v, --invert-match", "inverts search selection")
+        .option("-c, --no-colors", "removes colors from output")
+        .option("-o, --only-matching", "returns only the part of each line matching <text>")
+        .action((text, fileName = "index.js", options) => {
             const fileList = glob(fileName, { nodir: true }, (err, files) => {
                 if (err) {
                     console.log(`Error occured while creating glob pattern: ${err}`);
