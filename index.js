@@ -7,11 +7,12 @@ const execCmd = require("child_process").exec;
 program
     .version(pkgJson.version);
 
-// commands
+// add commands to "program"
 require("./commands/find")(program);
 require("./commands/create")(program);
 require("./commands/write")(program);
 require("./commands/move")(program);
+require("./commands/delete")(program);
 
 program
     .command("help [cmd]")
