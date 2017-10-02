@@ -10,7 +10,6 @@ module.exports = (program) => {
   .command(`create <name> [text]`)
   .alias(`c`)
   .description(`creates a file/directory with the given <name> and [text]`)
-  // .option(`-L, --lines`, `prints line of each line containing <text> (default output)`)
   .option("-d, --dir", "creates a directory with the given <name>")
   .option(`-c, --no-colors`, `removes colors from output`)
   .action((name, text = ``, options) => {
