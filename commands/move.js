@@ -1,8 +1,8 @@
 const baseChalk = require("chalk");
 const fs = require("fs");
 const path = require("path");
+const { getPath } = require("../utils/path");
 
-const getPath = name => path.isAbsolute(name) ? name : path.resolve(process.cwd(), name);
 
 module.exports = (program) => {
   program
