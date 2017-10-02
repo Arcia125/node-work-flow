@@ -1,9 +1,6 @@
 const baseChalk = require("chalk");
 const fs = require("fs");
 const path = require("path");
-const { promisify } = require("util");
-
-const writeFileAsync = promisify(fs.writeFile);
 
 const getPath = name => path.isAbsolute(name) ? name : path.resolve(process.cwd(), name);
 

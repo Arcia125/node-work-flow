@@ -1,7 +1,5 @@
 const baseChalk = require("chalk");
 const fs = require("fs");
-const path = require("path");
-const { promisify } = require("util");
 const axios = require("axios");
 
 module.exports = (program) => {
