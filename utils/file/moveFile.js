@@ -8,8 +8,8 @@ function copy (source, destination) {
     readStream.on("error", reject);
     writeStream.on("error", reject);
     readStream.on("close", () => fs.unlink(oldPath, (err) => err ? reject(err) : resolve()));
-  })
-  readStream.pipe(writeStream);
+    readStream.pipe(writeStream);
+  });
 }
 
 module.exports = function moveFile (source, destination) {
