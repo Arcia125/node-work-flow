@@ -13,6 +13,7 @@ require("./commands/create")(program);
 require("./commands/write")(program);
 require("./commands/move")(program);
 require("./commands/delete")(program);
+require("./commands/request")(program);
 
 program
     .command("help [cmd]")
