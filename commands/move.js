@@ -1,6 +1,5 @@
 const baseChalk = require("chalk");
 const fs = require("fs");
-const path = require("path");
 const { getPath } = require("../utils/path");
 
 
